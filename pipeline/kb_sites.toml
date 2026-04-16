@@ -1,0 +1,1225 @@
+# fin-aware Knowledge Base — Canonical Site List
+#
+# Scope: Full permissible boundary under Indian law for education, training & simulation.
+# Built for educational use now; extensible to commercial use at a later stage.
+#
+# Regulatory basis:
+#   - Copyright Act 1957 §52: fair dealing for research, private study, criticism, review
+#   - IT Act 2000 + DPDP Act 2023: data privacy, user consent
+#   - SEBI: educational content permitted; no personalized advice/trade execution
+#   - Public domain: all .gov.in / .gov official portals
+#
+# Fields:
+#   id         — unique snake_case identifier used in code and FAISS metadata
+#   name       — human-readable display name
+#   base_url   — root domain (used for robots.txt fetch: <base_url>/robots.txt)
+#   scrape_url — exact starting URL for the crawler
+#   tier       — 1=Quarterly, 2=Monthly, 3=Weekly (refresh cadence)
+#   domains    — knowledge domains this source covers
+#   levels     — curriculum levels covered (novice|intermediate|advanced|expert)
+#   extraction — preferred extraction method
+#   category   — A–I grouping (see comments below)
+#   notes      — permission notes / known constraints
+#
+# Extraction methods:
+#   trafilatura  — clean HTML article extraction
+#   pdfplumber   — text-based PDFs
+#   praw         — Reddit official API (requires app credentials)
+#   github_api   — GitHub REST API (README, wiki, releases)
+#   static       — pre-downloaded static files / archives
+#   api          — site-specific public API
+
+# ─────────────────────────────────────────────
+# Category A — Indian Regulatory & Government Bodies (Public Domain)
+# All .gov.in portals are public domain under Indian government open data policy.
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "sebi_main"
+name       = "SEBI — Main Portal (Notifications & Circulars)"
+base_url   = "https://www.sebi.gov.in"
+scrape_url = "https://www.sebi.gov.in/sebiweb/home/HomeAction.do?doListing=yes&sid=1&ssid=2&smid=0"
+tier       = 2
+domains    = ["foundations", "market", "tax", "algo_microstructure", "algo_risk"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain (.gov.in). Circulars and notifications on regulations."
+
+[[site]]
+id         = "sebi_investor_ed"
+name       = "SEBI Investor Education Portal"
+base_url   = "https://investor.sebi.gov.in"
+scrape_url = "https://investor.sebi.gov.in"
+tier       = 1
+domains    = ["foundations", "portfolio", "market", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Excellent foundational material explicitly for public education."
+
+[[site]]
+id         = "rbi_main"
+name       = "RBI — Reserve Bank of India"
+base_url   = "https://www.rbi.org.in"
+scrape_url = "https://www.rbi.org.in"
+tier       = 2
+domains    = ["foundations", "tax", "goals"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Circulars, monetary policy reports, financial stability reports."
+
+[[site]]
+id         = "amfi_india"
+name       = "AMFI India — Association of Mutual Funds in India"
+base_url   = "https://www.amfiindia.com"
+scrape_url = "https://www.amfiindia.com"
+tier       = 2
+domains    = ["foundations", "portfolio"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. NAV data, fund classifications, investor education."
+
+[[site]]
+id         = "nse_india"
+name       = "NSE India — National Stock Exchange"
+base_url   = "https://www.nseindia.com"
+scrape_url = "https://www.nseindia.com"
+tier       = 2
+domains    = ["market", "portfolio", "algo_microstructure", "algo_strategies"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Market data, press releases, derivatives analytics."
+
+[[site]]
+id         = "bse_india"
+name       = "BSE India — Bombay Stock Exchange"
+base_url   = "https://www.bseindia.com"
+scrape_url = "https://www.bseindia.com"
+tier       = 2
+domains    = ["market", "portfolio"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Market data and press releases."
+
+[[site]]
+id         = "nism"
+name       = "NISM — National Institute of Securities Markets"
+base_url   = "https://www.nism.ac.in"
+scrape_url = "https://www.nism.ac.in"
+tier       = 1
+domains    = ["foundations", "market", "portfolio", "algo_strategies", "algo_microstructure"]
+levels     = ["novice", "intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Free NISM courseware and certifications content."
+
+[[site]]
+id         = "irdai"
+name       = "IRDAI — Insurance Regulatory and Development Authority"
+base_url   = "https://www.irdai.gov.in"
+scrape_url = "https://www.irdai.gov.in"
+tier       = 2
+domains    = ["foundations", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Insurance product guidelines and consumer education."
+
+[[site]]
+id         = "pfrda"
+name       = "PFRDA — Pension Fund Regulatory and Development Authority"
+base_url   = "https://www.pfrda.org.in"
+scrape_url = "https://www.pfrda.org.in"
+tier       = 2
+domains    = ["foundations", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. NPS, APY, retirement planning regulatory content."
+
+[[site]]
+id         = "nps_trust"
+name       = "NPS Trust"
+base_url   = "https://www.npstrust.org.in"
+scrape_url = "https://www.npstrust.org.in"
+tier       = 2
+domains    = ["goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. NPS scheme details, calculators, subscriber education."
+
+[[site]]
+id         = "epfo"
+name       = "EPFO — Employees' Provident Fund Organisation"
+base_url   = "https://www.epfindia.gov.in"
+scrape_url = "https://www.epfindia.gov.in"
+tier       = 2
+domains    = ["foundations", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. EPF, EPS, gratuity educational content."
+
+[[site]]
+id         = "incometax_india"
+name       = "Income Tax India — Official Portal"
+base_url   = "https://www.incometaxindia.gov.in"
+scrape_url = "https://www.incometaxindia.gov.in"
+tier       = 2
+domains    = ["tax"]
+levels     = ["novice", "intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Income tax acts, rules, press releases."
+
+[[site]]
+id         = "incometax_efiling"
+name       = "Income Tax e-Filing Portal"
+base_url   = "https://www.incometax.gov.in"
+scrape_url = "https://www.incometax.gov.in"
+tier       = 2
+domains    = ["tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Tax filing guides, FAQs, forms."
+
+[[site]]
+id         = "itat"
+name       = "ITAT — Income Tax Appellate Tribunal"
+base_url   = "https://www.itat.gov.in"
+scrape_url = "https://www.itat.gov.in"
+tier       = 2
+domains    = ["tax"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Case law and tribunal orders — advanced tax reference."
+
+[[site]]
+id         = "mof_india"
+name       = "Ministry of Finance — India"
+base_url   = "https://finmin.nic.in"
+scrape_url = "https://finmin.nic.in"
+tier       = 2
+domains    = ["foundations", "tax", "market"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Budget documents, economic surveys, policy circulars."
+
+[[site]]
+id         = "mca"
+name       = "MCA — Ministry of Corporate Affairs"
+base_url   = "https://www.mca.gov.in"
+scrape_url = "https://www.mca.gov.in"
+tier       = 2
+domains    = ["foundations", "tax"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Company law, compliance, corporate governance."
+
+[[site]]
+id         = "ibbi"
+name       = "IBBI — Insolvency and Bankruptcy Board of India"
+base_url   = "https://ibbi.gov.in"
+scrape_url = "https://ibbi.gov.in"
+tier       = 2
+domains    = ["foundations", "tax"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. IBC, insolvency proceedings education."
+
+[[site]]
+id         = "mospi"
+name       = "MOSPI — Ministry of Statistics and Programme Implementation"
+base_url   = "https://mospi.gov.in"
+scrape_url = "https://mospi.gov.in"
+tier       = 2
+domains    = ["market", "algo_foundations"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. GDP, CPI, IIP macroeconomic datasets."
+
+[[site]]
+id         = "nabard"
+name       = "NABARD — National Bank for Agriculture and Rural Development"
+base_url   = "https://www.nabard.org"
+scrape_url = "https://www.nabard.org"
+tier       = 2
+domains    = ["foundations"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. Rural finance, agricultural credit education."
+
+[[site]]
+id         = "gst_council"
+name       = "GST Council — India"
+base_url   = "https://gstcouncil.gov.in"
+scrape_url = "https://gstcouncil.gov.in"
+tier       = 2
+domains    = ["tax"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. GST rate notifications, council meeting outcomes."
+
+[[site]]
+id         = "gst_portal"
+name       = "GST Portal — Public FAQs & Guides"
+base_url   = "https://www.gst.gov.in"
+scrape_url = "https://www.gst.gov.in"
+tier       = 1
+domains    = ["tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "A"
+notes      = "Public domain. GST registration, returns, and taxpayer education FAQs."
+
+[[site]]
+id         = "nse_bhavcopy"
+name       = "NSE Bhavcopy — EOD Data Archives"
+base_url   = "https://www.nseindia.com"
+scrape_url = "https://www.nseindia.com/products/content/equities/equities/archieve_eq.htm"
+tier       = 2
+domains    = ["algo_foundations", "algo_strategies", "algo_backtesting"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "static"
+category   = "A"
+notes      = "Public domain. Daily EOD price/volume data for backtesting."
+
+[[site]]
+id         = "bse_archive"
+name       = "BSE Data Archive"
+base_url   = "https://www.bseindia.com"
+scrape_url = "https://www.bseindia.com/markets/marketinfo/HistoricaldataArchive.aspx"
+tier       = 2
+domains    = ["algo_foundations", "algo_backtesting"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "static"
+category   = "A"
+notes      = "Public domain. Historical OHLCV archives."
+
+# ─────────────────────────────────────────────
+# Category B — Indian Financial Education Platforms
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "zerodha_varsity"
+name       = "Zerodha Varsity"
+base_url   = "https://zerodha.com"
+scrape_url = "https://zerodha.com/varsity"
+tier       = 1
+domains    = ["foundations", "portfolio", "market", "tax", "algo_strategies", "algo_foundations", "algo_microstructure"]
+levels     = ["novice", "intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Openly licensed for educational use. Highest priority Tier 1 source."
+
+[[site]]
+id         = "trading_qna"
+name       = "TradingQnA — Zerodha Community"
+base_url   = "https://tradingqna.com"
+scrape_url = "https://tradingqna.com"
+tier       = 3
+domains    = ["market", "portfolio", "algo_strategies", "algo_microstructure"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Zerodha community Q&A. Permission required per CONTEXT.md — contact for educational/non-commercial use."
+
+[[site]]
+id         = "nse_pathshala"
+name       = "NSE Pathshala — Investor Education"
+base_url   = "https://www.nseindia.com"
+scrape_url = "https://www.nseindia.com/invest/education"
+tier       = 1
+domains    = ["foundations", "market", "portfolio", "algo_strategies"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Public domain (NSE). Structured modules on markets, derivatives, MFs."
+
+[[site]]
+id         = "bse_institute"
+name       = "BSE Institute — Free Resources"
+base_url   = "https://www.bse-institute.com"
+scrape_url = "https://www.bse-institute.com"
+tier       = 1
+domains    = ["foundations", "market", "portfolio"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "BSE subsidiary. Free courses and articles on capital markets."
+
+[[site]]
+id         = "freefincal"
+name       = "Freefincal — M. Pattabiraman"
+base_url   = "https://freefincal.com"
+scrape_url = "https://freefincal.com"
+tier       = 1
+domains    = ["foundations", "portfolio", "goals", "tax"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Freely accessible. Evidence-based personal finance blog. Heavy on Indian context."
+
+[[site]]
+id         = "capitalmind"
+name       = "Capitalmind"
+base_url   = "https://www.capitalmind.in"
+scrape_url = "https://www.capitalmind.in"
+tier       = 3
+domains    = ["market", "portfolio", "algo_strategies"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Some free content. Check T&C for non-commercial educational scraping."
+
+[[site]]
+id         = "sensibull_blog"
+name       = "Sensibull Blog — Options Education"
+base_url   = "https://sensibull.com"
+scrape_url = "https://sensibull.com/blog"
+tier       = 1
+domains    = ["algo_strategies", "algo_microstructure", "market"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Zerodha-backed. Options education content. Check T&C."
+
+[[site]]
+id         = "elearnmarkets"
+name       = "Elearnmarkets"
+base_url   = "https://www.elearnmarkets.com"
+scrape_url = "https://www.elearnmarkets.com"
+tier       = 1
+domains    = ["foundations", "market", "portfolio", "algo_strategies"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "StockEdge parent. Large free library of trading and investing education articles."
+
+[[site]]
+id         = "stockedge_blog"
+name       = "StockEdge Learn"
+base_url   = "https://stockedge.com"
+scrape_url = "https://stockedge.com/blog"
+tier       = 1
+domains    = ["market", "portfolio", "foundations"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Free blog content. Check T&C for scraping rights."
+
+[[site]]
+id         = "personalfn"
+name       = "PersonalFN"
+base_url   = "https://www.personalfn.com"
+scrape_url = "https://www.personalfn.com"
+tier       = 1
+domains    = ["foundations", "portfolio", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Large library of personal finance articles for India. Check T&C."
+
+[[site]]
+id         = "advisorkhoj"
+name       = "Advisorkhoj"
+base_url   = "https://www.advisorkhoj.com"
+scrape_url = "https://www.advisorkhoj.com"
+tier       = 1
+domains    = ["portfolio", "market", "goals"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "MF analytics, portfolio overlap tools. Educational articles freely accessible."
+
+[[site]]
+id         = "jagoinvestor"
+name       = "Jagoinvestor — Manish Chauhan"
+base_url   = "https://www.jagoinvestor.com"
+scrape_url = "https://www.jagoinvestor.com"
+tier       = 1
+domains    = ["foundations", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Pioneer Indian personal finance blog. Extensively covers insurance, goals, tax."
+
+[[site]]
+id         = "etmoney_learn"
+name       = "ET Money — Learn"
+base_url   = "https://www.etmoney.com"
+scrape_url = "https://www.etmoney.com/learn"
+tier       = 1
+domains    = ["foundations", "portfolio", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Times Group. Free educational section. Check T&C for scraping."
+
+[[site]]
+id         = "groww_learn"
+name       = "Groww — Learn"
+base_url   = "https://groww.in"
+scrape_url = "https://groww.in/p/learn"
+tier       = 1
+domains    = ["foundations", "portfolio", "market", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Large library of beginner-friendly articles. Freely accessible."
+
+[[site]]
+id         = "paytmmoney_blog"
+name       = "Paytm Money Blog"
+base_url   = "https://www.paytmmoney.com"
+scrape_url = "https://www.paytmmoney.com/blog"
+tier       = 3
+domains    = ["foundations", "portfolio"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Paytm Money educational blog. Check T&C."
+
+[[site]]
+id         = "valuepickr"
+name       = "ValuePickr — Forum"
+base_url   = "https://www.valuepickr.com"
+scrape_url = "https://www.valuepickr.com"
+tier       = 3
+domains    = ["market", "portfolio"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Deep fundamental analysis community. Permission required per CONTEXT.md."
+
+[[site]]
+id         = "screener_in"
+name       = "Screener.in — Educational Content"
+base_url   = "https://www.screener.in"
+scrape_url = "https://www.screener.in"
+tier       = 1
+domains    = ["market", "portfolio"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Free fundamental data and guide articles. Check T&C — data scraping likely restricted, articles may be OK."
+
+[[site]]
+id         = "tijori_finance"
+name       = "Tijori Finance"
+base_url   = "https://tijorifinance.com"
+scrape_url = "https://tijorifinance.com"
+tier       = 2
+domains    = ["market", "portfolio"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Sector analysis and company breakdown guides. Check T&C."
+
+[[site]]
+id         = "rupeevest"
+name       = "Rupeevest — MF Overlap Analyzer"
+base_url   = "https://www.rupeevest.com"
+scrape_url = "https://www.rupeevest.com"
+tier       = 2
+domains    = ["portfolio"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Portfolio overlap and MF analytics. Educational guides."
+
+[[site]]
+id         = "moneyworks4me"
+name       = "Moneyworks4me"
+base_url   = "https://www.moneyworks4me.com"
+scrape_url = "https://www.moneyworks4me.com"
+tier       = 1
+domains    = ["foundations", "market", "portfolio"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "B"
+notes      = "Free personal finance and investment education articles."
+
+# ─────────────────────────────────────────────
+# Category C — Indian Tax & Accounting Resources
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "cleartax"
+name       = "ClearTax — Articles & Guides"
+base_url   = "https://cleartax.in"
+scrape_url = "https://cleartax.in"
+tier       = 1
+domains    = ["tax", "foundations", "goals"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "India's largest tax education resource. Freely accessible articles."
+
+[[site]]
+id         = "taxguru"
+name       = "Tax Guru"
+base_url   = "https://taxguru.in"
+scrape_url = "https://taxguru.in"
+tier       = 3
+domains    = ["tax"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Deep CA-authored tax articles, circulars analysis. Freely accessible."
+
+[[site]]
+id         = "caclubindia"
+name       = "CA Club India"
+base_url   = "https://www.caclubindia.com"
+scrape_url = "https://www.caclubindia.com"
+tier       = 3
+domains    = ["tax", "foundations"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Community articles on taxation, compliance, company law. Check T&C."
+
+[[site]]
+id         = "tax2win"
+name       = "Tax2Win — Guides"
+base_url   = "https://tax2win.in"
+scrape_url = "https://tax2win.in"
+tier       = 1
+domains    = ["tax"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Beginner tax education articles. Freely accessible."
+
+[[site]]
+id         = "the_tax_talk"
+name       = "The Tax Talk"
+base_url   = "https://thetaxtalk.com"
+scrape_url = "https://thetaxtalk.com"
+tier       = 3
+domains    = ["tax"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Tax practitioner articles and updates. Check T&C."
+
+[[site]]
+id         = "icai"
+name       = "ICAI — Knowledge Portal"
+base_url   = "https://www.icai.org"
+scrape_url = "https://www.icai.org"
+tier       = 1
+domains    = ["tax", "foundations"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Institute of Chartered Accountants of India. Free publications."
+
+[[site]]
+id         = "icsi"
+name       = "ICSI — Institute of Company Secretaries"
+base_url   = "https://www.icsi.edu"
+scrape_url = "https://www.icsi.edu"
+tier       = 1
+domains    = ["tax", "foundations"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Company secretaries institute. Free study materials and guidance notes."
+
+[[site]]
+id         = "livelaw_tax"
+name       = "Livelaw — Tax & Finance Section"
+base_url   = "https://www.livelaw.in"
+scrape_url = "https://www.livelaw.in"
+tier       = 3
+domains    = ["tax"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "C"
+notes      = "Legal reporting on ITAT, High Court, SC tax rulings. Check T&C."
+
+# ─────────────────────────────────────────────
+# Category D — Indian Financial News & Analysis
+# NOTE: These are Tier 3 (dynamic), used only for news synthesis.
+# Direct scraping likely blocked — SERP API fallback expected for most.
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "moneycontrol"
+name       = "Moneycontrol"
+base_url   = "https://www.moneycontrol.com"
+scrape_url = "https://www.moneycontrol.com"
+tier       = 3
+domains    = ["market", "portfolio", "foundations"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "Major Indian financial news portal. Likely SERP_ONLY due to T&C restrictions."
+
+[[site]]
+id         = "economic_times"
+name       = "Economic Times — Markets"
+base_url   = "https://economictimes.indiatimes.com"
+scrape_url = "https://economictimes.indiatimes.com/markets"
+tier       = 3
+domains    = ["market", "foundations"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "Times Group. Likely SERP_ONLY. Rich financial news for news synthesizer agent."
+
+[[site]]
+id         = "business_standard"
+name       = "Business Standard"
+base_url   = "https://www.business-standard.com"
+scrape_url = "https://www.business-standard.com/finance"
+tier       = 3
+domains    = ["market", "tax", "foundations"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "Likely SERP_ONLY. High-quality financial and regulatory news."
+
+[[site]]
+id         = "livemint"
+name       = "Livemint"
+base_url   = "https://www.livemint.com"
+scrape_url = "https://www.livemint.com/money"
+tier       = 3
+domains    = ["market", "goals", "tax"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "HT Media / WSJ partnership. Likely SERP_ONLY."
+
+[[site]]
+id         = "financial_express"
+name       = "Financial Express"
+base_url   = "https://www.financialexpress.com"
+scrape_url = "https://www.financialexpress.com/money"
+tier       = 3
+domains    = ["market", "tax", "foundations"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "IE Group. Check T&C."
+
+[[site]]
+id         = "hindu_business_line"
+name       = "The Hindu BusinessLine"
+base_url   = "https://www.thehindubusinessline.com"
+scrape_url = "https://www.thehindubusinessline.com/markets"
+tier       = 3
+domains    = ["market", "foundations", "tax"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "The Hindu Group. Check T&C — some free articles."
+
+[[site]]
+id         = "cnbc_tv18"
+name       = "CNBC TV18 — News Text"
+base_url   = "https://www.cnbctv18.com"
+scrape_url = "https://www.cnbctv18.com/market"
+tier       = 3
+domains    = ["market"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "Network18 / CNBC. Check T&C."
+
+[[site]]
+id         = "bq_prime"
+name       = "BQ Prime (BloombergQuint)"
+base_url   = "https://www.bqprime.com"
+scrape_url = "https://www.bqprime.com"
+tier       = 3
+domains    = ["market", "algo_risk"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "D"
+notes      = "Bloomberg partnership. Check T&C — likely SERP_ONLY."
+
+# ─────────────────────────────────────────────
+# Category E — International Financial Education (Globally Accessible)
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "investopedia"
+name       = "Investopedia"
+base_url   = "https://www.investopedia.com"
+scrape_url = "https://www.investopedia.com"
+tier       = 1
+domains    = ["foundations", "market", "portfolio", "goals", "algo_foundations", "algo_strategies"]
+levels     = ["novice", "intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Gold standard financial education dictionary. Likely SERP_ONLY or MANUAL_REVIEW."
+
+[[site]]
+id         = "cfa_institute"
+name       = "CFA Institute — Free Research Foundation"
+base_url   = "https://www.cfainstitute.org"
+scrape_url = "https://www.cfainstitute.org/en/research/foundation"
+tier       = 1
+domains    = ["portfolio", "market", "algo_foundations", "algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "CFA Institute publishes free research monographs. Open access publications."
+
+[[site]]
+id         = "caia"
+name       = "CAIA Association — Free Education"
+base_url   = "https://caia.org"
+scrape_url = "https://caia.org/education"
+tier       = 1
+domains    = ["algo_risk", "algo_strategies", "portfolio"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Alternative investment education. Some free content."
+
+[[site]]
+id         = "bogleheads"
+name       = "Bogleheads Wiki & Forum"
+base_url   = "https://www.bogleheads.org"
+scrape_url = "https://www.bogleheads.org"
+tier       = 1
+domains    = ["foundations", "portfolio", "goals"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Passive investing philosophy wiki. Community-edited, open access."
+
+[[site]]
+id         = "khan_academy_finance"
+name       = "Khan Academy — Finance & Economics"
+base_url   = "https://www.khanacademy.org"
+scrape_url = "https://www.khanacademy.org/economics-finance-domain"
+tier       = 1
+domains    = ["foundations", "algo_foundations"]
+levels     = ["novice", "intermediate"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Free education mandate (CC BY-NC-SA). Excellent foundational content."
+
+[[site]]
+id         = "portfolio_visualizer"
+name       = "Portfolio Visualizer — Guides"
+base_url   = "https://www.portfoliovisualizer.com"
+scrape_url = "https://www.portfoliovisualizer.com"
+tier       = 1
+domains    = ["portfolio", "algo_risk", "algo_backtesting"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Quantitative portfolio analysis tools with educational documentation."
+
+[[site]]
+id         = "morningstar"
+name       = "Morningstar — Free Articles"
+base_url   = "https://www.morningstar.com"
+scrape_url = "https://www.morningstar.com/learn"
+tier       = 1
+domains    = ["portfolio", "foundations"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "E"
+notes      = "Free educational articles on MFs, ETFs, investing basics. Check T&C."
+
+# ─────────────────────────────────────────────
+# Category F — International Regulatory Bodies & Research
+# Most are public domain / open access government institutions.
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "imf"
+name       = "IMF — International Monetary Fund"
+base_url   = "https://www.imf.org"
+scrape_url = "https://www.imf.org/en/Publications/WP"
+tier       = 2
+domains    = ["algo_foundations", "algo_risk", "market", "foundations"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "Open access working papers and research. IMF T&C allows educational use."
+
+[[site]]
+id         = "world_bank"
+name       = "World Bank — Finance Research"
+base_url   = "https://www.worldbank.org"
+scrape_url = "https://www.worldbank.org/en/research"
+tier       = 2
+domains    = ["foundations", "algo_foundations"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "Open access research papers. CC BY 3.0 IGO license on most publications."
+
+[[site]]
+id         = "bis_research"
+name       = "BIS — Bank for International Settlements Working Papers"
+base_url   = "https://www.bis.org"
+scrape_url = "https://www.bis.org/research"
+tier       = 2
+domains    = ["algo_risk", "algo_microstructure", "market"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "BIS working papers are freely downloadable. Check copyright notice."
+
+[[site]]
+id         = "us_fed"
+name       = "US Federal Reserve — Research & Data"
+base_url   = "https://www.federalreserve.gov"
+scrape_url = "https://www.federalreserve.gov/pubs/index.htm"
+tier       = 2
+domains    = ["algo_foundations", "algo_risk", "market"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "US Federal government. Public domain by definition. Working papers and FEDS notes."
+
+[[site]]
+id         = "sec_edu"
+name       = "SEC — Investor Education"
+base_url   = "https://www.sec.gov"
+scrape_url = "https://www.sec.gov/education"
+tier       = 1
+domains    = ["foundations", "portfolio", "market"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "US Federal government. Public domain. SEC investor education guides."
+
+[[site]]
+id         = "ecb_research"
+name       = "ECB — European Central Bank Research"
+base_url   = "https://www.ecb.europa.eu"
+scrape_url = "https://www.ecb.europa.eu/pub"
+tier       = 2
+domains    = ["algo_foundations", "algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "ECB working papers freely accessible. Check copyright."
+
+[[site]]
+id         = "oecd_finance"
+name       = "OECD — Financial Education"
+base_url   = "https://www.oecd.org"
+scrape_url = "https://www.oecd.org/finance"
+tier       = 1
+domains    = ["foundations", "goals"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "F"
+notes      = "OECD/INFE financial literacy publications. Many are free to access."
+
+# ─────────────────────────────────────────────
+# Category G — Quantitative Finance & Algorithmic Trading
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "aqr_research"
+name       = "AQR Capital — Research Papers"
+base_url   = "https://www.aqr.com"
+scrape_url = "https://www.aqr.com/insights/research"
+tier       = 1
+domains    = ["algo_strategies", "algo_risk", "algo_foundations", "portfolio"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Free research papers on factor investing, momentum, risk parity."
+
+[[site]]
+id         = "alpha_architect"
+name       = "Alpha Architect Blog"
+base_url   = "https://alphaarchitect.com"
+scrape_url = "https://alphaarchitect.com/blog"
+tier       = 1
+domains    = ["algo_strategies", "portfolio", "algo_foundations"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Evidence-based factor investing research blog. Freely accessible."
+
+[[site]]
+id         = "quantecon"
+name       = "QuantEcon"
+base_url   = "https://quantecon.org"
+scrape_url = "https://quantecon.org"
+tier       = 1
+domains    = ["algo_foundations", "algo_strategies", "algo_ml"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Thomas Sargent & John Stachurski. CC BY-ND 4.0. Rigorous quant economics, free."
+
+[[site]]
+id         = "arxiv_qfin"
+name       = "arXiv — q-fin Section"
+base_url   = "https://arxiv.org"
+scrape_url = "https://arxiv.org/archive/q-fin"
+tier       = 2
+domains    = ["algo_foundations", "algo_strategies", "algo_risk", "algo_ml", "algo_microstructure"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Open access preprints. Cornell University. Public domain."
+
+[[site]]
+id         = "ssrn_finance"
+name       = "SSRN — Finance Section"
+base_url   = "https://www.ssrn.com"
+scrape_url = "https://www.ssrn.com/index.cfm/en/finance"
+tier       = 2
+domains    = ["algo_foundations", "algo_strategies", "algo_risk", "portfolio"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Social Science Research Network. Preprints freely downloadable. Elsevier owned — check T&C."
+
+[[site]]
+id         = "nber_finance"
+name       = "NBER — Working Papers (Finance)"
+base_url   = "https://www.nber.org"
+scrape_url = "https://www.nber.org/browse-by-topic/finance"
+tier       = 2
+domains    = ["algo_foundations", "algo_risk", "portfolio"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "National Bureau of Economic Research. Abstracts free; some papers behind paywall."
+
+[[site]]
+id         = "wilmott"
+name       = "Wilmott.com — Quant Forums"
+base_url   = "https://wilmott.com"
+scrape_url = "https://wilmott.com"
+tier       = 3
+domains    = ["algo_foundations", "algo_strategies", "algo_risk", "algo_microstructure"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Quant professional community. Check T&C for scraping."
+
+[[site]]
+id         = "quantconnect_forum"
+name       = "QuantConnect Forum"
+base_url   = "https://www.quantconnect.com"
+scrape_url = "https://www.quantconnect.com/forum"
+tier       = 3
+domains    = ["algo_backtesting", "algo_strategies", "algo_ml"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Open backtesting platform community. Check T&C."
+
+[[site]]
+id         = "backtrader_docs"
+name       = "Backtrader Documentation"
+base_url   = "https://www.backtrader.com"
+scrape_url = "https://www.backtrader.com/docu"
+tier       = 1
+domains    = ["algo_backtesting", "algo_strategies"]
+levels     = ["intermediate", "advanced"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Open source Python backtesting framework documentation."
+
+[[site]]
+id         = "prmia"
+name       = "PRMIA — Professional Risk Managers' International Association"
+base_url   = "https://prmia.org"
+scrape_url = "https://prmia.org"
+tier       = 1
+domains    = ["algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Risk management professional body. Free educational resources."
+
+[[site]]
+id         = "garp"
+name       = "GARP — Global Association of Risk Professionals"
+base_url   = "https://www.garp.org"
+scrape_url = "https://www.garp.org"
+tier       = 1
+domains    = ["algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "trafilatura"
+category   = "G"
+notes      = "Risk education body. Free articles and resources."
+
+# ─────────────────────────────────────────────
+# Category H — Open Source / GitHub Knowledge Sources
+# GitHub API allows reading public repo content.
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "quantconnect_lean"
+name       = "QuantConnect LEAN — GitHub (README & Wiki)"
+base_url   = "https://github.com"
+scrape_url = "https://github.com/QuantConnect/Lean"
+tier       = 1
+domains    = ["algo_backtesting", "algo_strategies", "algo_microstructure"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "github_api"
+category   = "H"
+notes      = "Apache 2.0 license. README, wiki, and release notes via GitHub API."
+
+[[site]]
+id         = "zipline_reloaded"
+name       = "Zipline Reloaded — GitHub"
+base_url   = "https://github.com"
+scrape_url = "https://github.com/stefan-jansen/zipline-reloaded"
+tier       = 1
+domains    = ["algo_backtesting", "algo_strategies"]
+levels     = ["advanced", "expert"]
+extraction = "github_api"
+category   = "H"
+notes      = "Apache 2.0 license."
+
+[[site]]
+id         = "pyfolio"
+name       = "PyFolio — GitHub"
+base_url   = "https://github.com"
+scrape_url = "https://github.com/quantopian/pyfolio"
+tier       = 1
+domains    = ["algo_backtesting", "algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "github_api"
+category   = "H"
+notes      = "Apache 2.0 license. Performance analysis tearsheets."
+
+[[site]]
+id         = "quantstats"
+name       = "QuantStats — GitHub"
+base_url   = "https://github.com"
+scrape_url = "https://github.com/ranaroussi/quantstats"
+tier       = 1
+domains    = ["algo_backtesting", "algo_risk"]
+levels     = ["intermediate", "advanced"]
+extraction = "github_api"
+category   = "H"
+notes      = "Apache 2.0 license."
+
+[[site]]
+id         = "finrl"
+name       = "FinRL Library — GitHub"
+base_url   = "https://github.com"
+scrape_url = "https://github.com/AI4Finance-Foundation/FinRL"
+tier       = 1
+domains    = ["algo_ml", "algo_strategies"]
+levels     = ["advanced", "expert"]
+extraction = "github_api"
+category   = "H"
+notes      = "MIT license. Reinforcement learning for trading."
+
+# ─────────────────────────────────────────────
+# Category I — Community Forums & Subreddits
+# All accessed via official PRAW (Reddit API) — NOT direct scraping.
+# Requires Reddit API app credentials (client_id, client_secret, user_agent).
+# ─────────────────────────────────────────────
+
+[[site]]
+id         = "reddit_india_investments"
+name       = "r/IndiaInvestments"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/IndiaInvestments"
+tier       = 3
+domains    = ["foundations", "portfolio", "market", "goals", "tax"]
+levels     = ["novice", "intermediate", "advanced"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW). No direct scraping. Terms permit API access."
+
+[[site]]
+id         = "reddit_pf_india"
+name       = "r/personalfinanceindia"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/personalfinanceindia"
+tier       = 3
+domains    = ["foundations", "goals", "tax"]
+levels     = ["novice", "intermediate"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW)."
+
+[[site]]
+id         = "reddit_algotrading"
+name       = "r/algotrading"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/algotrading"
+tier       = 3
+domains    = ["algo_strategies", "algo_backtesting", "algo_ml"]
+levels     = ["intermediate", "advanced", "expert"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW)."
+
+[[site]]
+id         = "reddit_quant"
+name       = "r/quant"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/quant"
+tier       = 3
+domains    = ["algo_foundations", "algo_strategies", "algo_risk"]
+levels     = ["advanced", "expert"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW)."
+
+[[site]]
+id         = "reddit_stocks"
+name       = "r/stocks (India context)"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/stocks"
+tier       = 3
+domains    = ["market", "portfolio"]
+levels     = ["novice", "intermediate"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW). Filter for India-relevant posts."
+
+[[site]]
+id         = "reddit_mf_india"
+name       = "r/mutualfunds"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/mutualfunds"
+tier       = 3
+domains    = ["portfolio", "foundations"]
+levels     = ["novice", "intermediate"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW)."
+
+[[site]]
+id         = "reddit_fire_india"
+name       = "r/FIREIndia"
+base_url   = "https://www.reddit.com"
+scrape_url = "https://www.reddit.com/r/FIREIndia"
+tier       = 3
+domains    = ["goals", "foundations", "portfolio"]
+levels     = ["intermediate", "advanced"]
+extraction = "praw"
+category   = "I"
+notes      = "Official Reddit API (PRAW). Financial Independence / Early Retirement India."

@@ -1,0 +1,53 @@
+# fin-aware — Python 3.11 dependencies
+# Install: pip install -r requirements.txt
+
+# ── HTTP & HTML ──────────────────────────────────────────────────────────────
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+trafilatura>=1.8.0
+
+# ── TOML (reader is stdlib tomllib in Python 3.11; writer needs tomli-w) ────
+tomli-w>=1.0.0
+
+# ── LLM & Agent orchestration ───────────────────────────────────────────────
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-google-genai>=1.0.0
+google-generativeai>=0.7.0
+
+# ── RAG / Vector DB ──────────────────────────────────────────────────────────
+faiss-cpu>=1.8.0
+sentence-transformers>=3.0.0
+
+# ── Market data ──────────────────────────────────────────────────────────────
+yfinance>=0.2.40
+alpha-vantage>=2.3.1
+
+# ── Reddit API ───────────────────────────────────────────────────────────────
+praw>=7.7.0
+
+# ── PDF extraction ───────────────────────────────────────────────────────────
+pdfplumber>=0.11.0
+pdf2image>=1.17.0
+pytesseract>=0.3.10
+
+# ── Table extraction ─────────────────────────────────────────────────────────
+camelot-py[cv]>=0.11.0
+pandas>=2.2.0
+
+# ── YouTube transcripts ──────────────────────────────────────────────────────
+youtube-transcript-api>=0.6.2
+
+# ── Web UI ───────────────────────────────────────────────────────────────────
+streamlit>=1.35.0
+
+# ── Caching & persistence ────────────────────────────────────────────────────
+redis>=5.0.0
+
+# ── Backtesting & performance ────────────────────────────────────────────────
+quantstats>=0.0.62
+# pyfolio-reloaded>=0.9.5     # uncomment when backtesting agent is implemented
+# zipline-reloaded>=3.0.3     # uncomment when backtesting agent is implemented
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0
